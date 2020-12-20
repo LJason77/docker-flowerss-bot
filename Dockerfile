@@ -1,8 +1,10 @@
 FROM golang:alpine AS builder
 
-RUN apk add --no-cache --no-progress git make gcc libc-dev && \
-	git clone --depth=1 https://github.com/indes/flowerss-bot.git && \
-	cd flowerss-bot/ && make build
+RUN apk add --no-cache --no-progress git make gcc libc-dev
+
+RUN git clone --depth=1 https://github.com/indes/flowerss-bot.git
+
+RUN cd flowerss-bot/ && make build
 
 FROM alpine:latest
 
